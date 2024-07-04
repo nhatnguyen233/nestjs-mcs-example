@@ -9,6 +9,7 @@ import {
   ConfigModule as NestConfigModule,
 } from '@nestjs/config';
 import * as Joi from 'joi';
+import { LocalStrategy } from './strategies/local.strategy';
 
 @Module({
   imports: [
@@ -27,13 +28,13 @@ import * as Joi from 'joi';
       useFactory: (configService: ConfigService) => ({
         secret: configService.get<string>(`JWT_SECRET`),
         signOptions: {
-          expiresIn: `${configService.get(`JWT_EXPIRATION`)}`,
+          expiresIn: `${configService.get(`JWT_EXPIRATION`)}s`,
         },
       }),
       inject: [ConfigService],
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [AuthService, LocalStrategy],
 })
 export class AuthModule {}
