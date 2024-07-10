@@ -1,4 +1,3 @@
-import { Stripe } from 'stripe';
 import { IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CardDto {
@@ -10,9 +9,6 @@ export class CardDto {
 
   @IsNumber()
   exp_year: number;
-
-  @IsOptional()
-  networks?: Stripe.PaymentMethodCreateParams.Card.Networks;
 
   @IsString()
   number: string;
