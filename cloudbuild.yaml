@@ -67,5 +67,3 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args:
       ['push', 'asia-southeast1-docker.pkg.dev/sleepr-429003/auth/production']
-options:
-  logging: CLOUD_LOGGING_ONLY
