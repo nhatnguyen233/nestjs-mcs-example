@@ -22,7 +22,9 @@ export class UsersService {
 
   private async validateCreateUserDto(createUserDto: CreateUserDto) {
     try {
-      await this.usersRepository.find({ email: createUserDto.email });
+      await this.usersRepository.findOne({
+        email: createUserDto.email,
+      });
     } catch (err) {
       return;
     }
